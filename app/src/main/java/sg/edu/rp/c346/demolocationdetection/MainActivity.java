@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     FusedLocationProviderClient client;
     Button btnGetLastLocation, btnGetLocationUpdate, btnRemoveLocationUpdate;
+    LocationCallback mLocationCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        final LocationCallback mLocationCallback = new LocationCallback() {
+        mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 if (locationResult != null) {
