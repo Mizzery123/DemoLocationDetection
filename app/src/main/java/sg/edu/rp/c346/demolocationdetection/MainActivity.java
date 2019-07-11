@@ -82,12 +82,13 @@ public class MainActivity extends AppCompatActivity {
         btnGetLocationUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LocationRequest mLocationRequest = LocationRequest.create();
-                mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-                mLocationRequest.setInterval(10000);
-                mLocationRequest.setFastestInterval(5000);
-                mLocationRequest.setSmallestDisplacement(100);
+
                 if (checkPermission()){
+                    LocationRequest mLocationRequest = new LocationRequest();
+                    mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                    mLocationRequest.setInterval(10000);
+                    mLocationRequest.setFastestInterval(5000);
+                    mLocationRequest.setSmallestDisplacement(100);
                     client.requestLocationUpdates(mLocationRequest, mLocationCallback, null);
                 }else{
                     String msg = "Permission not granted to retrieve location info";
